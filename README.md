@@ -1,28 +1,9 @@
 # Home Credit: probability of default
 
-A logistic-regression-with-splines credit model on the Kaggle [Home Credit Default Risk](https://www.kaggle.com/competitions/home-credit-default-risk) data: hypotheses → EDA → leakage and redundancy audit → feature engineering from the bureau and Home Credit history tables → linearity-driven pipeline → calibration and out-of-fold evaluation → XGBoost challenger → Kaggle submission.
+A logistic-regression-with-splines credit model on the Kaggle [Home Credit Default Risk](https://www.kaggle.com/competitions/home-credit-default-risk) data: hypotheses → EDA → leakage and redundancy audit → feature engineering from the bureau and Home Credit history tables → linearity-driven pipeline → calibration and out-of-fold evaluation → XGBoost challenger.
 
 Everything is in `home_credit_default.ipynb`.
 
-## Data
-
-1. Accept the competition rules on Kaggle (Data tab → "I Understand and Accept").
-2. Put your API token in `~/.kaggle/kaggle.json` (Kaggle → Settings → API → Create New Token).
-3. Download the data into `data/` (the notebook uses every table except the sample submission):
-
-```sh
-uv run --with kaggle kaggle competitions download -c home-credit-default-risk -p data
-cd data && unzip home-credit-default-risk.zip
-```
-
-## Run
-
-```sh
-uv sync
-uv run jupyter nbconvert --to notebook --execute --inplace home_credit_default.ipynb
-```
-
-Or open it in your IDE with the `.venv` kernel. A full run takes about 10 minutes on a 12-thread, 16 GB machine. If the grid search runs out of memory, lower `n_jobs`. The run also writes `submission.csv` (logistic regression) and `submission_xgboost.csv` (challenger) for Kaggle.
 
 ## Results (5-fold, out of fold)
 
